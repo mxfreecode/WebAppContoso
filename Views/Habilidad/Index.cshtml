@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebAppContoso.Models.Habilidad>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>REGISTROS DE HABILIDADES</h1>
+<br />
+
+<button class="btn btn-success btn-lg"><a class="nav-link text-dark" asp-area="" asp-controller="Habilidad" asp-action="Create">Crear Habilidad</a></button>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("NOMBRE DE LA HABILIDAD")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Habilidad" asp-action="Index">CREAR</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Habilidad" asp-action="Index">DETALLES</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Habilidad" asp-action="Index">ELIMINAR</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

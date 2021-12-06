@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebAppContoso.Models.EmpleadoHabilidad>
+
+@{
+    ViewData["Title"] = "REGISTROS DE ID´S";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>REGISTROS DE ID´S</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Empleado ID")
+            </th>
+            <th>
+                @Html.DisplayName("Habilidad ID")
+            </th>
+            <th>
+                @Html.DisplayName("Habilidad")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpleadoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HabilidadId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilidad.EmpleadoHabilidad)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

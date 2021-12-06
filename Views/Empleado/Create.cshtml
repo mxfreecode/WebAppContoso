@@ -1,0 +1,67 @@
+﻿@model WebAppContoso.Models.ViewModel.EmpleadoHabilidadViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CREAR</h1>
+
+<h4>EMPLEADO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label"></label>
+                <input asp-for="Correo" class="form-control" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Número de Teléfono</label>
+                <input asp-for="RolNum" class="form-control" />
+                <span asp-validation-for="RolNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Habilidades:</label>
+                <p>Si no aparece ninguna habilidad agregue una, antes de registrar el empleado</p>
+                <table>
+                    @for (int i = 0; i < Model.Habilidades.Capacity; i++)
+                    { 
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(x => Model.Habilidades[i].Id)
+                                @Html.DisplayFor(it => Model.Habilidades[i].Titulo)
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(it => Model.Habilidades[i].IsChecked, new{ })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-success btn-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
